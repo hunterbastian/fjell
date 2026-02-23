@@ -36,17 +36,16 @@ function handleBuy() {
       <div class="item-header">
         <span class="item-name">{{ item.name }}</span>
         <span class="item-level" :class="{ 'level-max': maxed }">
-          {{ maxed ? 'MAX' : `${level}/${item.maxLevel}` }}
+          {{ maxed ? 'max' : `${level}/${item.maxLevel}` }}
         </span>
       </div>
       <div class="item-desc">{{ item.desc }}</div>
     </div>
     <div class="item-cost" v-if="!maxed">
-      <span class="crown-icon">&#128081;</span>
       <span class="crown-val" :class="{ 'crown-short': !affordable }">{{ fmt(cost) }}</span>
     </div>
     <div class="item-cost maxed-label" v-else>
-      COMPLETE
+      done
     </div>
   </div>
 </template>
@@ -60,22 +59,19 @@ function handleBuy() {
   padding: 10px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
 .crown-item.maxed {
   opacity: 0.5;
   cursor: default;
 }
 .crown-item.affordable {
-  border-color: rgba(212, 160, 23, 0.4);
+  border-color: rgba(212, 160, 23, 0.3);
 }
 .crown-item.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 12px rgba(212, 160, 23, 0.2);
   border-color: var(--gold);
-  transform: translateY(-1px);
 }
 .crown-item:not(.affordable):not(.maxed) {
   cursor: default;
@@ -92,25 +88,22 @@ function handleBuy() {
   gap: 6px;
 }
 .item-name {
-  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
 }
 .item-level {
-  font-family: var(--font-mono);
   font-size: 10px;
   color: var(--gold);
-  background: rgba(212, 160, 23, 0.1);
+  border: 1px solid var(--border);
   padding: 1px 5px;
-  border-radius: var(--radius-sm);
 }
 .item-level.level-max {
   color: var(--success);
-  background: rgba(58, 122, 40, 0.1);
+  border-color: rgba(58, 122, 40, 0.3);
 }
 .item-desc {
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-dim);
   margin-top: 2px;
 }
@@ -119,11 +112,7 @@ function handleBuy() {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: var(--font-mono);
   font-size: 13px;
-}
-.crown-icon {
-  font-size: 14px;
 }
 .crown-val {
   color: var(--gold);
@@ -133,8 +122,8 @@ function handleBuy() {
 }
 .maxed-label {
   color: var(--success);
-  font-family: var(--font-display);
   font-size: 10px;
-  letter-spacing: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 </style>

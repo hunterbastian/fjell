@@ -72,7 +72,7 @@ function handleBuy() {
     <div class="card-info">
       <div class="card-header">
         <span class="card-name">{{ upgrade.name }}</span>
-        <span v-if="purchased" class="card-owned">OWNED</span>
+        <span v-if="purchased" class="card-owned">owned</span>
       </div>
       <div class="card-desc">{{ upgrade.desc }}</div>
       <div class="card-effect">{{ effectText(upgrade.effects) }}</div>
@@ -83,7 +83,7 @@ function handleBuy() {
           {{ fmt(amt) }}
         </span>
         <span class="cost-res" :style="{ color: RESOURCES[RES[resId]].color }">
-          {{ RESOURCES[RES[resId]].icon }}
+          {{ RESOURCES[RES[resId]].letter }}
         </span>
       </div>
     </div>
@@ -100,9 +100,8 @@ function handleBuy() {
   padding: 10px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
 .upgrade-card.locked {
   opacity: 0.3;
@@ -111,17 +110,14 @@ function handleBuy() {
 .upgrade-card.purchased {
   opacity: 0.55;
   cursor: default;
-  border-color: rgba(58, 122, 40, 0.4);
+  border-color: rgba(58, 122, 40, 0.3);
 }
 .upgrade-card.affordable {
-  border-color: var(--torch-dim);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(232, 160, 48, 0.03) 100%);
+  border-color: var(--accent-dim);
 }
 .upgrade-card.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 12px var(--torch-glow), 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-color: var(--torch);
-  transform: translateY(-1px);
+  border-color: var(--accent);
 }
 .upgrade-card:not(.affordable):not(.purchased) {
   cursor: default;
@@ -139,29 +135,25 @@ function handleBuy() {
   gap: 6px;
 }
 .card-name {
-  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
 }
 .card-owned {
-  font-family: var(--font-mono);
   font-size: 9px;
   color: var(--success);
-  background: rgba(58, 122, 40, 0.1);
+  border: 1px solid rgba(58, 122, 40, 0.3);
   padding: 1px 5px;
-  border-radius: var(--radius-sm);
   letter-spacing: 0.5px;
 }
 .card-desc {
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-dim);
   margin-top: 2px;
 }
 .card-effect {
-  font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--torch);
+  color: var(--accent);
   margin-top: 3px;
 }
 
@@ -169,7 +161,6 @@ function handleBuy() {
   text-align: right;
 }
 .cost-line {
-  font-family: var(--font-mono);
   font-size: 12px;
   white-space: nowrap;
   display: flex;
@@ -178,7 +169,7 @@ function handleBuy() {
   gap: 3px;
 }
 .cost-val {
-  color: var(--torch);
+  color: var(--accent);
 }
 .cost-val.cost-short {
   color: var(--danger);

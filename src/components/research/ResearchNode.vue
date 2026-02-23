@@ -51,16 +51,16 @@ function handleClick() {
       <PixelProgress
         :value="research.activeProgress"
         :max="node.time"
-        color="var(--torch)"
+        color="var(--accent)"
         :height="4"
       />
-      <div class="progress-time mono">{{ fmtTime(Math.ceil(node.time - research.activeProgress)) }}</div>
+      <div class="progress-time">{{ fmtTime(Math.ceil(node.time - research.activeProgress)) }}</div>
     </div>
 
     <div v-else-if="completed" class="node-done">&#10003;</div>
 
-    <div v-else class="node-cost mono">
-      {{ fmt(node.cost) }} RP &middot; {{ fmtTime(node.time) }}
+    <div v-else class="node-cost">
+      {{ fmt(node.cost) }} rp &middot; {{ fmtTime(node.time) }}
     </div>
   </div>
 </template>
@@ -71,9 +71,8 @@ function handleClick() {
   padding: 10px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   cursor: default;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s;
   text-align: center;
   flex-shrink: 0;
 }
@@ -86,44 +85,39 @@ function handleClick() {
 .research-node.affordable {
   opacity: 1;
   cursor: pointer;
-  border-color: var(--torch-dim);
+  border-color: var(--accent-dim);
 }
 .research-node.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px var(--torch-glow);
-  border-color: var(--torch);
+  border-color: var(--accent);
 }
 .research-node.active {
   opacity: 1;
-  border-color: var(--torch);
-  box-shadow: 0 0 14px var(--torch-glow);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(232, 160, 48, 0.04) 100%);
+  border-color: var(--accent);
 }
 .research-node.completed {
   opacity: 0.55;
-  border-color: rgba(58, 122, 40, 0.4);
+  border-color: rgba(58, 122, 40, 0.3);
 }
 .research-node.capstone.completed {
-  border-color: rgba(144, 96, 192, 0.4);
-  box-shadow: 0 0 12px rgba(144, 96, 192, 0.2);
+  border-color: rgba(144, 96, 192, 0.3);
 }
 
 .node-name {
-  font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 3px;
 }
 .node-desc {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--text-dim);
   margin-bottom: 5px;
   line-height: 1.3;
 }
 .node-cost {
   font-size: 10px;
-  color: var(--torch);
+  color: var(--accent);
 }
 .node-done {
   font-size: 16px;
@@ -134,7 +128,7 @@ function handleClick() {
 }
 .progress-time {
   font-size: 10px;
-  color: var(--torch);
+  color: var(--accent);
   margin-top: 3px;
 }
 </style>

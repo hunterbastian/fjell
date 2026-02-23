@@ -18,8 +18,8 @@ const castleLevel = computed(() => buildings.getLevel('castle'))
 const castleNeeded = 10
 const dynastyLabel = computed(() => {
   const n = prestige.dynastyCount
-  if (n === 0) return 'First Dynasty'
-  return `Dynasty ${n + 1}`
+  if (n === 0) return 'first dynasty'
+  return `dynasty ${n + 1}`
 })
 
 function attemptPrestige() {
@@ -31,12 +31,12 @@ function confirmPrestige() {
   const earned = prestige.performPrestige()
   showConfirm.value = false
   if (earned) {
-    toast(`New Dynasty! +${earned} Crowns earned`, 'success')
+    toast(`new dynasty! +${earned} crowns earned`, 'success')
   }
 }
 
 function handleShopBuy(name, level) {
-  toast(`${name} upgraded to Lv.${level}`, 'success')
+  toast(`${name} upgraded to lv.${level}`, 'success')
 }
 </script>
 
@@ -45,24 +45,23 @@ function handleShopBuy(name, level) {
     <!-- Dynasty Status -->
     <PixelPanel class="dynasty-header">
       <div class="dynasty-title-row">
-        <h2 class="display-title dynasty-name">{{ dynastyLabel }}</h2>
+        <h2 class="dynasty-name">{{ dynastyLabel }}</h2>
         <div class="crown-balance">
-          <span class="crown-icon">&#128081;</span>
-          <span class="crown-count">{{ fmt(prestige.availableCrowns) }}</span>
+          <span class="crown-count">{{ fmt(prestige.availableCrowns) }} crowns</span>
         </div>
       </div>
 
       <div class="dynasty-stats">
         <div class="stat-item">
-          <span class="stat-label">Dynasties Completed</span>
+          <span class="stat-label">dynasties</span>
           <span class="stat-val">{{ prestige.dynastyCount }}</span>
         </div>
         <div class="stat-item">
-          <span class="stat-label">Total Crowns Earned</span>
+          <span class="stat-label">total earned</span>
           <span class="stat-val gold">{{ fmt(prestige.totalCrowns) }}</span>
         </div>
         <div class="stat-item">
-          <span class="stat-label">Crowns Available</span>
+          <span class="stat-label">available</span>
           <span class="stat-val gold">{{ fmt(prestige.availableCrowns) }}</span>
         </div>
       </div>
@@ -70,25 +69,25 @@ function handleShopBuy(name, level) {
 
     <!-- Prestige Action -->
     <PixelPanel class="prestige-section">
-      <h3 class="section-title">New Dynasty</h3>
+      <h3 class="section-title">new dynasty</h3>
       <p class="prestige-desc">
-        Abandon your kingdom and begin anew. All buildings, resources, upgrades,
-        and research will be lost. Crowns and crown shop purchases persist forever.
+        abandon your kingdom and begin anew. all buildings, resources, upgrades,
+        and research will be lost. crowns and crown shop purchases persist forever.
       </p>
 
       <div class="prestige-req">
-        <span class="req-label">Castle Level:</span>
+        <span class="req-label">castle level:</span>
         <span class="req-val" :class="{ met: castleLevel >= castleNeeded }">
           {{ castleLevel }} / {{ castleNeeded }}
         </span>
       </div>
 
       <div class="prestige-reward" v-if="prestige.pendingCrowns > 0">
-        <span class="reward-label">Crowns earned:</span>
-        <span class="reward-val">+{{ fmt(prestige.pendingCrowns) }} &#128081;</span>
+        <span class="reward-label">crowns earned:</span>
+        <span class="reward-val">+{{ fmt(prestige.pendingCrowns) }}</span>
       </div>
       <div class="prestige-reward" v-else>
-        <span class="reward-label dim">Earn more resources to gain crowns</span>
+        <span class="reward-label dim">earn more resources to gain crowns</span>
       </div>
 
       <button
@@ -97,14 +96,14 @@ function handleShopBuy(name, level) {
         :disabled="!prestige.canPrestige"
         @click="attemptPrestige"
       >
-        Begin New Dynasty
+        begin new dynasty
       </button>
     </PixelPanel>
 
     <!-- Crown Shop -->
     <PixelPanel class="shop-section">
-      <h3 class="section-title">Crown Shop</h3>
-      <p class="shop-desc">Permanent upgrades that persist across all dynasties.</p>
+      <h3 class="section-title">crown shop</h3>
+      <p class="shop-desc">permanent upgrades that persist across all dynasties.</p>
 
       <div class="shop-list">
         <CrownShopItem
@@ -119,26 +118,26 @@ function handleShopBuy(name, level) {
     <!-- Prestige Confirmation Modal -->
     <GameModal :show="showConfirm" @close="showConfirm = false">
       <div class="confirm-content">
-        <h2 class="display-title confirm-title">Begin New Dynasty?</h2>
+        <h2 class="confirm-title">begin new dynasty?</h2>
         <div class="confirm-warning">
-          <p>This will <strong>permanently destroy</strong> your current kingdom:</p>
+          <p>this will <strong>permanently destroy</strong> your current kingdom:</p>
           <ul class="reset-list">
-            <li>All resources</li>
-            <li>All buildings</li>
-            <li>All upgrades</li>
-            <li>All research progress</li>
+            <li>all resources</li>
+            <li>all buildings</li>
+            <li>all upgrades</li>
+            <li>all research progress</li>
           </ul>
         </div>
         <div class="confirm-gain">
-          <p>You will receive:</p>
-          <span class="gain-crowns">+{{ fmt(prestige.pendingCrowns) }} &#128081; Crowns</span>
+          <p>you will receive:</p>
+          <span class="gain-crowns">+{{ fmt(prestige.pendingCrowns) }} crowns</span>
         </div>
         <div class="confirm-buttons">
           <button class="cancel-btn" @click="showConfirm = false">
-            Cancel
+            cancel
           </button>
           <button class="confirm-btn" @click="confirmPrestige">
-            Destroy &amp; Rebuild
+            destroy &amp; rebuild
           </button>
         </div>
       </div>
@@ -165,18 +164,18 @@ function handleShopBuy(name, level) {
   margin-bottom: 14px;
 }
 .dynasty-name {
-  font-size: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin: 0;
 }
 .crown-balance {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 17px;
-}
-.crown-icon {
-  font-size: 20px;
+  font-size: 13px;
 }
 .crown-count {
   color: var(--gold);
@@ -194,12 +193,11 @@ function handleShopBuy(name, level) {
   gap: 2px;
 }
 .stat-label {
-  font-size: 13px;
+  font-size: 10px;
   color: var(--text-dim);
 }
 .stat-val {
-  font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text);
 }
 .stat-val.gold {
@@ -208,14 +206,15 @@ function handleShopBuy(name, level) {
 
 /* Prestige Section */
 .section-title {
-  font-family: var(--font-display);
-  font-size: 14px;
-  color: var(--torch);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
   margin: 0 0 8px 0;
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 .prestige-desc {
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-dim);
   margin: 0 0 14px 0;
   line-height: 1.5;
@@ -226,13 +225,12 @@ function handleShopBuy(name, level) {
   align-items: center;
   gap: 8px;
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .req-label {
   color: var(--text-dim);
 }
 .req-val {
-  font-family: var(--font-mono);
   color: var(--danger);
 }
 .req-val.met {
@@ -241,19 +239,17 @@ function handleShopBuy(name, level) {
 
 .prestige-reward {
   margin-bottom: 14px;
-  font-size: 14px;
+  font-size: 12px;
 }
 .reward-label {
   color: var(--text-dim);
 }
 .reward-label.dim {
   color: var(--text-dim);
-  font-style: italic;
 }
 .reward-val {
-  font-family: var(--font-mono);
   color: var(--gold);
-  font-size: 16px;
+  font-size: 14px;
   margin-left: 6px;
 }
 
@@ -261,15 +257,14 @@ function handleShopBuy(name, level) {
   display: block;
   width: 100%;
   padding: 11px;
-  font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-dim);
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  text-transform: uppercase;
   letter-spacing: 1px;
-  transition: all 0.2s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 .prestige-btn:disabled {
   opacity: 0.35;
@@ -278,17 +273,15 @@ function handleShopBuy(name, level) {
 .prestige-btn.ready {
   color: var(--gold);
   border-color: rgba(212, 160, 23, 0.4);
-  animation: torch-flicker 3s ease-in-out infinite;
 }
 .prestige-btn.ready:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 16px rgba(212, 160, 23, 0.3);
   border-color: var(--gold);
 }
 
 /* Shop Section */
 .shop-desc {
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-dim);
   margin: 0 0 12px 0;
 }
@@ -303,14 +296,17 @@ function handleShopBuy(name, level) {
   text-align: center;
 }
 .confirm-title {
-  font-size: 17px;
+  font-size: 14px;
+  font-weight: 700;
   color: var(--danger);
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin-bottom: 16px;
 }
 .confirm-warning {
   text-align: left;
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-dim);
 }
 .confirm-warning strong {
@@ -320,20 +316,19 @@ function handleShopBuy(name, level) {
   margin: 8px 0 0 20px;
   padding: 0;
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 12px;
 }
 .reset-list li {
   margin-bottom: 4px;
 }
 .confirm-gain {
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 12px;
   color: var(--text-dim);
 }
 .gain-crowns {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 22px;
+  font-size: 18px;
   color: var(--gold);
   margin-top: 6px;
 }
@@ -346,12 +341,10 @@ function handleShopBuy(name, level) {
   background: var(--bg-card);
   padding: 9px 20px;
   color: var(--text-dim);
-  font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: all 0.15s;
+  transition: background 0.15s;
 }
 .cancel-btn:hover {
   background: var(--bg-card-hover);
@@ -360,15 +353,12 @@ function handleShopBuy(name, level) {
   background: var(--bg-card);
   padding: 9px 20px;
   color: var(--danger);
-  font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   border: 1px solid rgba(160, 48, 48, 0.4);
-  border-radius: var(--radius);
-  transition: all 0.15s;
+  transition: background 0.15s;
 }
 .confirm-btn:hover {
-  background: rgba(160, 48, 48, 0.15);
-  box-shadow: 0 0 10px rgba(160, 48, 48, 0.2);
+  background: rgba(160, 48, 48, 0.1);
 }
 </style>

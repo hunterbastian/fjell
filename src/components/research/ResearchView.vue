@@ -53,17 +53,17 @@ function getNodeRows(nodes) {
   <div class="research-view">
     <div class="research-header">
       <div class="rp-display">
-        <span class="rp-label">Research Points</span>
-        <span class="rp-value mono">{{ fmt(research.researchPoints) }}</span>
-        <span v-if="research.rpRate > 0" class="rp-rate mono">+{{ fmt(research.rpRate) }}/s</span>
+        <span class="rp-label">rp</span>
+        <span class="rp-value">{{ fmt(research.researchPoints) }}</span>
+        <span v-if="research.rpRate > 0" class="rp-rate">+{{ fmt(research.rpRate) }}/s</span>
       </div>
       <div v-if="research.activeNode" class="active-research">
-        <span class="active-label">Researching:</span>
+        <span class="active-label">researching:</span>
         <span class="active-name">{{ research.activeNode.name }}</span>
-        <span class="active-pct mono">{{ Math.round(research.activePercent) }}%</span>
+        <span class="active-pct">{{ Math.round(research.activePercent) }}%</span>
       </div>
       <div v-else-if="research.rpRate === 0" class="rp-hint">
-        Build a Library to generate Research Points
+        build a library to generate rp
       </div>
     </div>
 
@@ -124,14 +124,12 @@ function getNodeRows(nodes) {
   gap: 6px;
 }
 .rp-label {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-dim);
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .rp-value {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--faith);
   font-weight: 700;
 }
@@ -140,9 +138,8 @@ function getNodeRows(nodes) {
   color: var(--success);
 }
 .rp-hint {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-dim);
-  font-style: italic;
 }
 .active-research {
   display: flex;
@@ -150,17 +147,16 @@ function getNodeRows(nodes) {
   gap: 6px;
 }
 .active-label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-dim);
 }
 .active-name {
-  font-family: var(--font-display);
-  font-size: 12px;
-  color: var(--torch);
+  font-size: 11px;
+  color: var(--accent);
 }
 .active-pct {
   font-size: 11px;
-  color: var(--torch);
+  color: var(--accent);
 }
 
 .branch-scroll {
@@ -175,7 +171,6 @@ function getNodeRows(nodes) {
 .branch {
   background: var(--bg-dark);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   padding: 12px;
 }
 .branch-header {
@@ -185,12 +180,11 @@ function getNodeRows(nodes) {
   gap: 8px;
 }
 .branch-name {
-  font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 .branch-desc {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-dim);
 }
 

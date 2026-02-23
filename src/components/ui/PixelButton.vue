@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-  variant: { type: String, default: 'default' }, // 'default' | 'primary' | 'danger'
+  variant: { type: String, default: 'default' },
   disabled: { type: Boolean, default: false },
   small: { type: Boolean, default: false },
 })
@@ -20,42 +20,31 @@ defineEmits(['click'])
 
 <style scoped>
 .pixel-btn {
-  background: linear-gradient(180deg, var(--bg-card-hover), var(--bg-card));
-  padding: 8px 16px;
+  background: var(--bg-card);
+  padding: 6px 14px;
   color: var(--text);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
   border: 1px solid var(--border-lit);
-  border-radius: var(--radius);
-  transition: all 0.15s;
-  white-space: nowrap;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: background 0.1s, border-color 0.1s;
 }
 .pixel-btn:hover:not(:disabled) {
-  background: linear-gradient(180deg, var(--bg-card-hover), var(--bg-card));
+  background: var(--bg-card-hover);
   border-color: var(--border-highlight);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 .pixel-btn:active:not(:disabled) {
-  transform: translateY(1px);
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  background: var(--bg-card);
 }
 .pixel-btn--primary {
-  color: var(--torch);
-  border-color: var(--torch-dim);
-}
-.pixel-btn--primary:hover:not(:disabled) {
-  box-shadow: 0 0 10px var(--torch-glow), 0 1px 6px rgba(0, 0, 0, 0.4);
+  color: var(--accent);
+  border-color: var(--accent-dim);
 }
 .pixel-btn--danger {
   color: var(--danger);
-  border-color: rgba(160, 48, 48, 0.4);
+  border-color: rgba(204, 68, 68, 0.3);
 }
 .pixel-btn--small {
-  font-size: 11px;
+  font-size: 10px;
   padding: 4px 10px;
 }
 </style>

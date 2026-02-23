@@ -51,7 +51,7 @@ function handleBuy() {
     <div class="card-info">
       <div class="card-header">
         <span class="card-name">{{ building.name }}</span>
-        <span v-if="level > 0" class="card-level">Lv.{{ level }}</span>
+        <span v-if="level > 0" class="card-level">{{ level }}</span>
       </div>
       <div class="card-desc">{{ building.desc }}</div>
       <div v-if="production" class="card-production">
@@ -61,7 +61,7 @@ function handleBuy() {
         </span>
       </div>
       <div v-else-if="building.special" class="card-special">
-        {{ building.special === 'prestige' ? 'Enables New Dynasty' : building.special }}
+        {{ building.special === 'prestige' ? 'enables new dynasty' : building.special }}
       </div>
     </div>
     <div class="card-cost">
@@ -70,7 +70,7 @@ function handleBuy() {
           {{ fmt(amt) }}
         </span>
         <span class="cost-res" :style="{ color: RESOURCES[RES[resId]].color }">
-          {{ RESOURCES[RES[resId]].icon }}
+          {{ RESOURCES[RES[resId]].letter }}
         </span>
       </div>
     </div>
@@ -86,23 +86,19 @@ function handleBuy() {
   padding: 10px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
 .building-card.locked {
   opacity: 0.3;
   pointer-events: none;
 }
 .building-card.affordable {
-  border-color: var(--torch-dim);
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(232, 160, 48, 0.03) 100%);
+  border-color: var(--accent-dim);
 }
 .building-card.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 12px var(--torch-glow), 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-color: var(--torch);
-  transform: translateY(-1px);
+  border-color: var(--accent);
 }
 .building-card:not(.affordable) {
   cursor: default;
@@ -120,27 +116,22 @@ function handleBuy() {
   gap: 6px;
 }
 .card-name {
-  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
 }
 .card-level {
-  font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--torch);
-  background: rgba(232, 160, 48, 0.1);
+  color: var(--accent);
+  border: 1px solid var(--border);
   padding: 1px 5px;
-  border-radius: var(--radius-sm);
 }
 .card-desc {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-dim);
   margin-top: 2px;
-  line-height: 1.4;
 }
 .card-production {
-  font-family: var(--font-mono);
   font-size: 11px;
   margin-top: 3px;
   display: flex;
@@ -152,17 +143,15 @@ function handleBuy() {
   margin-left: 2px;
 }
 .card-special {
-  font-size: 13px;
+  font-size: 11px;
   color: var(--faith);
   margin-top: 3px;
-  text-transform: capitalize;
 }
 
 .card-cost {
   text-align: right;
 }
 .cost-line {
-  font-family: var(--font-mono);
   font-size: 12px;
   white-space: nowrap;
   display: flex;
@@ -171,7 +160,7 @@ function handleBuy() {
   gap: 3px;
 }
 .cost-val {
-  color: var(--torch);
+  color: var(--accent);
 }
 .cost-val.cost-short {
   color: var(--danger);

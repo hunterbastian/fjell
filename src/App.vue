@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="game-root vignette grain fog-bottom">
+  <div class="game-root">
     <GameHeader />
     <ResourceBar />
     <MainNav ref="navRef" />
@@ -86,17 +86,7 @@ onMounted(() => {
       </button>
     </GameModal>
 
-    <!-- Floating embers -->
-    <div class="particles" aria-hidden="true">
-      <span v-for="i in 12" :key="i" class="ember" :style="{
-        left: (Math.random() * 100) + '%',
-        animationDuration: (6 + Math.random() * 10) + 's',
-        animationDelay: (Math.random() * 12) + 's',
-        opacity: 0.08 + Math.random() * 0.18,
-        width: (1 + Math.random() * 2.5) + 'px',
-        height: (1 + Math.random() * 2.5) + 'px',
-      }" />
-    </div>
+    <!-- no particles -->
   </div>
 </template>
 
@@ -125,42 +115,21 @@ onMounted(() => {
   height: 100%;
 }
 .placeholder-text {
-  font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 13px;
   color: var(--text-dim);
-  letter-spacing: 2px;
-  text-transform: capitalize;
+  text-transform: lowercase;
 }
 .offline-btn {
   background: var(--bg-card);
-  padding: 9px 24px;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--torch);
+  padding: 8px 20px;
+  font-size: 12px;
+  color: var(--accent);
   display: block;
   margin: 0 auto;
-  border: 1px solid var(--torch-dim);
-  border-radius: var(--radius);
-  transition: all 0.15s;
+  border: 1px solid var(--border-lit);
+  transition: background 0.15s;
 }
 .offline-btn:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px var(--torch-glow);
-}
-.particles {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-.ember {
-  position: absolute;
-  bottom: -4px;
-  background: var(--torch);
-  border-radius: 50%;
-  animation: float-up linear infinite;
-  box-shadow: 0 0 4px var(--torch-glow);
 }
 </style>

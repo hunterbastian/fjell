@@ -27,13 +27,10 @@ const percent = computed(() =>
   background: var(--bg-dark);
   overflow: hidden;
   position: relative;
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
 }
 .progress-fill {
   height: 100%;
   transition: width 0.15s linear;
-  border-radius: 1px;
-  box-shadow: 0 0 6px currentColor;
 }
 </style>

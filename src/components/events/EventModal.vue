@@ -8,9 +8,9 @@ const events = useEventStore()
 const typeLabel = computed(() => {
   if (!events.activeEvent) return ''
   switch (events.activeEvent.type) {
-    case 'positive': return 'Blessing'
-    case 'negative': return 'Calamity'
-    case 'choice': return 'Omen'
+    case 'positive': return 'blessing'
+    case 'negative': return 'calamity'
+    case 'choice': return 'omen'
     default: return ''
   }
 })
@@ -29,7 +29,7 @@ const canDismiss = computed(() => {
     <div v-if="events.activeEvent" class="event-modal" :class="typeClass">
       <div class="event-type-badge" :class="typeClass">{{ typeLabel }}</div>
       <div class="event-icon">{{ events.activeEvent.icon }}</div>
-      <h2 class="event-title display-title">{{ events.activeEvent.name }}</h2>
+      <h2 class="event-title">{{ events.activeEvent.name }}</h2>
       <p class="event-desc">{{ events.activeEvent.desc }}</p>
 
       <!-- Positive/Negative: just show result -->
@@ -56,7 +56,7 @@ const canDismiss = computed(() => {
       <!-- After choice: show which was picked + result -->
       <div v-if="events.activeEvent.type === 'choice' && events.activeChoiceIndex >= 0" class="choice-result">
         <div class="chosen-label">
-          You chose: {{ events.activeEvent.choices[events.activeChoiceIndex].label }}
+          you chose: {{ events.activeEvent.choices[events.activeChoiceIndex].label }}
         </div>
       </div>
 
@@ -65,7 +65,7 @@ const canDismiss = computed(() => {
         class="dismiss-btn"
         @click="events.dismissEvent()"
       >
-        Continue
+        continue
       </button>
     </div>
   </GameModal>
@@ -79,18 +79,16 @@ const canDismiss = computed(() => {
 }
 
 .event-type-badge {
-  font-family: var(--font-mono);
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 2px;
   padding: 3px 10px;
   display: inline-block;
   margin-bottom: 10px;
-  border-radius: var(--radius-sm);
 }
-.event-type-badge.positive { color: var(--success); border: 1px solid rgba(58, 122, 40, 0.4); background: rgba(58, 122, 40, 0.08); }
-.event-type-badge.negative { color: var(--danger); border: 1px solid rgba(160, 48, 48, 0.4); background: rgba(160, 48, 48, 0.08); }
-.event-type-badge.choice { color: var(--faith); border: 1px solid rgba(144, 96, 192, 0.4); background: rgba(144, 96, 192, 0.08); }
+.event-type-badge.positive { color: var(--success); border: 1px solid rgba(58, 122, 40, 0.3); }
+.event-type-badge.negative { color: var(--danger); border: 1px solid rgba(160, 48, 48, 0.3); }
+.event-type-badge.choice { color: var(--faith); border: 1px solid rgba(144, 96, 192, 0.3); }
 
 .event-icon {
   font-size: 40px;
@@ -98,25 +96,27 @@ const canDismiss = computed(() => {
 }
 
 .event-title {
-  font-size: 17px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin-bottom: 8px;
 }
 
 .event-desc {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
   margin-bottom: 16px;
 }
 
 .event-result {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--torch);
+  font-size: 12px;
+  color: var(--accent);
   padding: 10px;
   background: var(--bg-dark);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   margin-bottom: 16px;
 }
 
@@ -131,26 +131,23 @@ const canDismiss = computed(() => {
   padding: 12px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
 .choice-btn:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px var(--torch-glow);
-  border-color: var(--torch-dim);
+  border-color: var(--accent-dim);
 }
 .choice-label {
   display: block;
-  font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 3px;
 }
 .choice-desc {
   display: block;
-  font-size: 13px;
+  font-size: 11px;
   color: var(--text-dim);
 }
 
@@ -158,8 +155,7 @@ const canDismiss = computed(() => {
   margin-bottom: 16px;
 }
 .chosen-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-dim);
   margin-bottom: 8px;
 }
@@ -167,18 +163,15 @@ const canDismiss = computed(() => {
 .dismiss-btn {
   background: var(--bg-card);
   padding: 9px 28px;
-  font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--torch);
-  border: 1px solid var(--torch-dim);
-  border-radius: var(--radius);
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
   margin: 0 auto;
   display: block;
-  transition: all 0.15s;
+  transition: background 0.15s;
 }
 .dismiss-btn:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px var(--torch-glow);
 }
 </style>

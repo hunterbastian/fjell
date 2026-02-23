@@ -24,14 +24,14 @@ const visibleUpgrades = computed(() => {
         :class="{ active: activeTab === 'buildings' }"
         @click="activeTab = 'buildings'"
       >
-        Buildings
+        buildings
       </button>
       <button
         class="shop-tab"
         :class="{ active: activeTab === 'upgrades' }"
         @click="activeTab = 'upgrades'"
       >
-        Upgrades
+        upgrades
         <span v-if="upgrades.purchasedCount > 0" class="tab-count">{{ upgrades.purchasedCount }}</span>
       </button>
     </div>
@@ -55,7 +55,7 @@ const visibleUpgrades = computed(() => {
           />
         </template>
         <div v-else class="shop-empty">
-          <p>No upgrades available yet</p>
+          <p>no upgrades available yet</p>
         </div>
       </div>
     </div>
@@ -76,32 +76,27 @@ const visibleUpgrades = computed(() => {
 .shop-tab {
   flex: 1;
   padding: 9px;
-  font-family: var(--font-display);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-weight: 500;
   color: var(--text-dim);
   text-align: center;
-  transition: color 0.2s, background 0.2s;
+  transition: color 0.15s;
   position: relative;
 }
-.shop-tab:hover { color: var(--text-mid); background: rgba(255, 255, 255, 0.02); }
-.shop-tab.active { color: var(--torch); background: rgba(232, 160, 48, 0.04); }
+.shop-tab:hover { color: var(--text-mid); }
+.shop-tab.active { color: var(--accent); }
 .shop-tab.active::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 12px;
-  right: 12px;
-  height: 2px;
-  background: var(--torch);
-  border-radius: 1px 1px 0 0;
-  box-shadow: 0 0 6px var(--torch-glow);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
 }
 .tab-count {
-  font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--torch);
+  color: var(--accent);
   margin-left: 4px;
 }
 
@@ -121,7 +116,6 @@ const visibleUpgrades = computed(() => {
   justify-content: center;
   height: 100%;
   color: var(--text-dim);
-  font-size: 15px;
-  font-style: italic;
+  font-size: 12px;
 }
 </style>

@@ -1,51 +1,56 @@
 :root {
-  /* Depths — warm charcoal-brown palette */
-  --bg-void:    #0a0806;
-  --bg-dark:    #141210;
-  --bg:         #1c1914;
-  --bg-panel:   #231f19;
-  --bg-card:    #2a2520;
-  --bg-card-hover: #342e27;
+  /* Depths — cool neutral */
+  --bg-void:    #0c0c0c;
+  --bg-dark:    #111111;
+  --bg:         #161616;
+  --bg-panel:   #1a1a1a;
+  --bg-card:    #1e1e1e;
+  --bg-card-hover: #252525;
 
-  /* Borders — aged iron / bronze */
-  --border:     #3d362c;
-  --border-lit: #544a3c;
-  --border-highlight: #6b5e4d;
+  /* Borders */
+  --border:     #2a2a2a;
+  --border-lit: #333333;
+  --border-highlight: #444444;
 
-  /* Text — parchment / cream */
-  --text:       #d4c8b0;
-  --text-dim:   #6d6050;
-  --text-mid:   #9a8c78;
+  /* Text */
+  --text:       #cccccc;
+  --text-dim:   #555555;
+  --text-mid:   #888888;
 
-  /* Torchlight — warm golden orange */
-  --torch:      #e8a030;
-  --torch-dim:  #b07820;
-  --torch-glow: rgba(232, 160, 48, 0.25);
-  --torch-glow-strong: rgba(232, 160, 48, 0.5);
-  --torch-warm: rgba(255, 180, 60, 0.08);
+  /* Accent */
+  --accent:     #d4a030;
+  --accent-dim: #a07820;
+  --accent-glow: rgba(212, 160, 48, 0.2);
+
+  /* Aliases */
+  --torch:      var(--accent);
+  --torch-dim:  var(--accent-dim);
+  --torch-glow: var(--accent-glow);
+  --torch-glow-strong: rgba(212, 160, 48, 0.4);
+  --torch-warm: rgba(212, 160, 48, 0.06);
 
   /* Resources */
-  --gold:   #d4a017;
-  --wood:   #8b5e3c;
-  --stone:  #7a7568;
-  --food:   #5a8a30;
-  --iron:   #8a8a94;
-  --faith:  #9060c0;
+  --gold:   #d4a030;
+  --wood:   #8b6e4e;
+  --stone:  #777777;
+  --food:   #6a9a40;
+  --iron:   #8888aa;
+  --faith:  #9070b0;
 
-  /* Accents */
+  /* Status */
   --dark:     #5a2080;
-  --danger:   #a03030;
-  --success:  #3a7a28;
-  --crown:    #d4a017;
+  --danger:   #cc4444;
+  --success:  #44aa44;
+  --crown:    #d4a030;
 
-  /* Typography */
-  --font-display: 'Cinzel', serif;
-  --font-body: 'Crimson Text', Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Mono everything */
+  --font-display: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-mono: 'IBM Plex Mono', monospace;
 
-  /* Sizing */
+  /* Zero radius = retro */
   --unit: 4px;
-  --radius-sm: 2px;
-  --radius: 4px;
-  --radius-lg: 6px;
+  --radius-sm: 0px;
+  --radius: 0px;
+  --radius-lg: 0px;
 }

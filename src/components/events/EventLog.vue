@@ -13,7 +13,7 @@ function timeAgo(timestamp) {
 
 <template>
   <div v-if="events.eventLog.length > 0" class="event-log">
-    <div class="log-header">Recent Events</div>
+    <div class="log-header">recent events</div>
     <div class="log-entries">
       <div
         v-for="(entry, i) in events.eventLog"
@@ -38,7 +38,6 @@ function timeAgo(timestamp) {
   overflow-y: auto;
 }
 .log-header {
-  font-family: var(--font-display);
   font-size: 10px;
   color: var(--text-dim);
   letter-spacing: 1.5px;
@@ -55,9 +54,8 @@ function timeAgo(timestamp) {
   align-items: center;
   gap: 6px;
   padding: 4px 6px;
-  font-size: 13px;
+  font-size: 11px;
   border-left: 2px solid var(--border);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   transition: background 0.15s;
 }
 .log-entry:hover {
@@ -75,10 +73,9 @@ function timeAgo(timestamp) {
 }
 .log-name {
   color: var(--text);
-  font-size: 13px;
+  font-size: 11px;
 }
 .log-time {
-  font-family: var(--font-mono);
   font-size: 10px;
   color: var(--text-dim);
   margin-left: auto;

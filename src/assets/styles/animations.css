@@ -1,141 +1,38 @@
-/* ═══════════════════════════════════════════
-   Animations — flicker, float, pulse, atmosphere
-   ═══════════════════════════════════════════ */
+/* Minimal animations */
 
-/* Torch flicker — subtle warm oscillation */
-@keyframes torch-flicker {
-  0%, 100% { opacity: 1; }
-  10% { opacity: 0.94; }
-  20% { opacity: 0.98; }
-  35% { opacity: 0.90; }
-  50% { opacity: 0.96; }
-  65% { opacity: 0.92; }
-  80% { opacity: 0.97; }
-  90% { opacity: 0.93; }
-}
-
-.flicker {
-  animation: torch-flicker 3s ease-in-out infinite;
-}
-
-/* Floating dust / embers */
-@keyframes float-up {
-  0% {
-    opacity: 0;
-    transform: translateY(0) translateX(0);
-  }
-  10% { opacity: 0.5; }
-  90% { opacity: 0.15; }
-  100% {
-    opacity: 0;
-    transform: translateY(-140px) translateX(25px);
-  }
-}
-
-/* Gentle pulse */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.015); }
-}
-
-.pulse {
-  animation: pulse 3s ease-in-out infinite;
-}
-
-/* Glow pulse */
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 8px var(--torch-glow), 0 0 16px rgba(232, 160, 48, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 16px var(--torch-glow-strong), 0 0 32px var(--torch-glow);
-  }
-}
-
-.glow-pulse {
-  animation: glow-pulse 2.5s ease-in-out infinite;
-}
-
-/* Fade in */
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+.fade-in { animation: fade-in 0.3s ease-out; }
 
-.fade-in {
-  animation: fade-in 0.4s ease-out;
-}
-
-/* Slide up */
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.slide-up { animation: slide-up 0.3s ease-out; }
 
-.slide-up {
-  animation: slide-up 0.4s ease-out;
-}
-
-/* Slide down */
-@keyframes slide-down {
-  from { opacity: 0; transform: translateY(-12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Float number (for click feedback) */
 @keyframes float-number {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-60px) scale(0.7);
-  }
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
 }
 
-/* Anvil press */
 @keyframes anvil-press {
   0% { transform: scale(1); }
-  30% { transform: scale(0.92); }
+  30% { transform: scale(0.94); }
   100% { transform: scale(1); }
 }
 
-/* Crit flash */
 @keyframes crit-flash {
   0% { filter: brightness(1); }
-  15% { filter: brightness(2.5); }
+  15% { filter: brightness(2); }
   100% { filter: brightness(1); }
 }
 
-/* Rune spin (for decorative elements) */
-@keyframes rune-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
-
-/* Momentum blaze */
-@keyframes blaze {
-  0%, 100% {
-    box-shadow:
-      0 0 20px var(--torch-glow-strong),
-      0 0 40px var(--torch-glow),
-      0 0 60px rgba(232, 160, 48, 0.15);
-  }
-  50% {
-    box-shadow:
-      0 0 30px var(--torch-glow-strong),
-      0 0 60px var(--torch-glow),
-      0 0 90px rgba(232, 160, 48, 0.25);
-  }
-}
-
-.blazing {
-  animation: blaze 1.5s ease-in-out infinite;
-}
-
-/* Warm shimmer for golden elements */
-@keyframes warm-shimmer {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.15); }
-}
+.pulse { animation: pulse 2s ease-in-out infinite; }
+.blazing { color: #cc4444; }
+.flicker { animation: pulse 3s ease-in-out infinite; }
