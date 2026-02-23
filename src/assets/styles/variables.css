@@ -1,0 +1,47 @@
+:root {
+  /* Depths */
+  --bg-void:    #080810;
+  --bg-dark:    #0e1018;
+  --bg:         #161822;
+  --bg-panel:   #1e2230;
+  --bg-card:    #252a3a;
+  --bg-card-hover: #2c3248;
+
+  /* Borders */
+  --border:     #3a3f50;
+  --border-lit: #4a5060;
+  --border-highlight: #5a6078;
+
+  /* Text */
+  --text:       #c8c0b0;
+  --text-dim:   #5a5868;
+  --text-mid:   #8a8498;
+
+  /* Torchlight */
+  --torch:      #e8a030;
+  --torch-dim:  #b07820;
+  --torch-glow: rgba(232, 160, 48, 0.25);
+  --torch-glow-strong: rgba(232, 160, 48, 0.45);
+
+  /* Resources */
+  --gold:   #d4a017;
+  --wood:   #6b4423;
+  --stone:  #5a6472;
+  --food:   #3a6a20;
+  --iron:   #8a8a94;
+  --faith:  #7040a0;
+
+  /* Accents */
+  --dark:     #3a0060;
+  --danger:   #8a2020;
+  --success:  #206a30;
+  --crown:    #d4a017;
+
+  /* Typography */
+  --font-display: 'Cinzel', serif;
+  --font-body: 'VT323', monospace;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Sizing */
+  --unit: 4px;
+}

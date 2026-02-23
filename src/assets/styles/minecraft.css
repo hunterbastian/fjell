@@ -1,0 +1,97 @@
+/* ═══════════════════════════════════════════
+   Minecraft-style UI primitives
+   Beveled borders, inventory slots, fog, grain
+   ═══════════════════════════════════════════ */
+
+/* Beveled panel — light top-left, dark bottom-right (Minecraft inventory style) */
+.bevel {
+  border: 2px solid;
+  border-color: var(--border-lit) var(--border) var(--border) var(--border-lit);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.04),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Inset bevel — like inventory slots */
+.bevel-inset {
+  border: 2px solid;
+  border-color: var(--border) var(--border-lit) var(--border-lit) var(--border);
+  box-shadow:
+    inset 1px 1px 0 rgba(0, 0, 0, 0.3),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Dark vignette overlay */
+.vignette::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(8, 8, 16, 0.4) 70%,
+    rgba(8, 8, 16, 0.8) 100%
+  );
+}
+
+/* Fog gradient — like Minecraft render distance */
+.fog-top::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 50;
+  background: linear-gradient(to bottom, var(--bg-void), transparent);
+}
+
+.fog-bottom::before {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  pointer-events: none;
+  z-index: 50;
+  background: linear-gradient(to top, var(--bg-void), transparent);
+}
+
+/* Noise grain texture overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Torchlit glow effect on hover */
+.torchlit {
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.torchlit:hover {
+  box-shadow: 0 0 12px var(--torch-glow), 0 0 24px var(--torch-glow);
+  border-color: var(--torch-dim);
+}
+
+/* Inventory slot style */
+.inv-slot {
+  background: var(--bg-card);
+  border: 2px solid;
+  border-color: var(--border) var(--border-lit) var(--border-lit) var(--border);
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.25);
+  padding: 8px;
+}
+
+/* Sharp corners everywhere — override any border-radius */
+.sharp, .sharp * {
+  border-radius: 0 !important;
+}

@@ -1,0 +1,135 @@
+/* ═══════════════════════════════════════════
+   Animations — flicker, float, pulse, grain
+   ═══════════════════════════════════════════ */
+
+/* Torch flicker — subtle brightness oscillation */
+@keyframes torch-flicker {
+  0%, 100% { opacity: 1; }
+  10% { opacity: 0.92; }
+  20% { opacity: 0.98; }
+  35% { opacity: 0.88; }
+  50% { opacity: 0.95; }
+  65% { opacity: 0.90; }
+  80% { opacity: 0.97; }
+  90% { opacity: 0.93; }
+}
+
+.flicker {
+  animation: torch-flicker 3s ease-in-out infinite;
+}
+
+/* Floating dust particles */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.2; }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) translateX(20px);
+  }
+}
+
+/* Gentle pulse */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--torch-glow), 0 0 16px rgba(232, 160, 48, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 16px var(--torch-glow-strong), 0 0 32px var(--torch-glow);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+/* Slide up */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+/* Slide down */
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Float number (for click feedback) */
+@keyframes float-number {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.7);
+  }
+}
+
+/* Anvil press */
+@keyframes anvil-press {
+  0% { transform: scale(1); }
+  30% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* Crit flash */
+@keyframes crit-flash {
+  0% { filter: brightness(1); }
+  15% { filter: brightness(2.5); }
+  100% { filter: brightness(1); }
+}
+
+/* Rune spin (for decorative elements) */
+@keyframes rune-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Momentum blaze */
+@keyframes blaze {
+  0%, 100% {
+    box-shadow:
+      0 0 20px var(--torch-glow-strong),
+      0 0 40px var(--torch-glow),
+      0 0 60px rgba(232, 160, 48, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 30px var(--torch-glow-strong),
+      0 0 60px var(--torch-glow),
+      0 0 90px rgba(232, 160, 48, 0.25);
+  }
+}
+
+.blazing {
+  animation: blaze 1.5s ease-in-out infinite;
+}
