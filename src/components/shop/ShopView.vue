@@ -37,7 +37,7 @@ const visibleUpgrades = computed(() => {
     </div>
 
     <div class="shop-body">
-      <div v-if="activeTab === 'buildings'" class="shop-list">
+      <div v-if="activeTab === 'buildings'" class="shop-list fade-in">
         <BuildingCard
           v-for="(b, i) in BUILDINGS"
           :key="b.id"
@@ -45,7 +45,7 @@ const visibleUpgrades = computed(() => {
           @toast="(msg) => emit('toast', msg)"
         />
       </div>
-      <div v-else class="shop-list">
+      <div v-else class="shop-list fade-in">
         <template v-if="visibleUpgrades.length > 0">
           <UpgradeCard
             v-for="u in visibleUpgrades"
@@ -70,33 +70,37 @@ const visibleUpgrades = computed(() => {
 }
 .shop-tabs {
   display: flex;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
 .shop-tab {
   flex: 1;
-  padding: 8px;
-  font-size: 16px;
+  padding: 9px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
   color: var(--text-dim);
   text-align: center;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.2s, background 0.2s;
   position: relative;
 }
-.shop-tab:hover { color: var(--text-mid); background: var(--bg-card); }
-.shop-tab.active { color: var(--torch); background: var(--bg-card); }
+.shop-tab:hover { color: var(--text-mid); background: rgba(255, 255, 255, 0.02); }
+.shop-tab.active { color: var(--torch); background: rgba(232, 160, 48, 0.04); }
 .shop-tab.active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 8px;
-  right: 8px;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
   height: 2px;
   background: var(--torch);
+  border-radius: 1px 1px 0 0;
   box-shadow: 0 0 6px var(--torch-glow);
 }
 .tab-count {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--torch);
   margin-left: 4px;
 }
@@ -109,6 +113,7 @@ const visibleUpgrades = computed(() => {
 .shop-list {
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 .shop-empty {
   display: flex;
@@ -116,6 +121,7 @@ const visibleUpgrades = computed(() => {
   justify-content: center;
   height: 100%;
   color: var(--text-dim);
-  font-size: 16px;
+  font-size: 15px;
+  font-style: italic;
 }
 </style>

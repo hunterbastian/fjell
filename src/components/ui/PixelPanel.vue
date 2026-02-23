@@ -9,7 +9,7 @@ defineProps({
   <div
     class="pixel-panel"
     :class="[
-      variant === 'inset' ? 'bevel-inset' : 'bevel',
+      variant === 'inset' ? 'panel-inset' : 'panel-raised',
       { 'torchlit': glow }
     ]"
   >
@@ -19,10 +19,19 @@ defineProps({
 
 <style scoped>
 .pixel-panel {
-  background: var(--bg-panel);
-  padding: 12px;
+  padding: 14px;
+  border-radius: var(--radius);
 }
-.pixel-panel.bevel-inset {
+.panel-raised {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-lit);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+.panel-inset {
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 </style>

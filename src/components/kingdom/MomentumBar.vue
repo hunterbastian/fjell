@@ -26,7 +26,7 @@ const isBlaze = computed(() => currentMomentum.value >= MOMENTUM.max)
       :value="currentMomentum"
       :max="MOMENTUM.max"
       :color="isBlaze ? '#ff6030' : 'var(--torch)'"
-      :height="6"
+      :height="5"
     />
   </div>
 </template>
@@ -34,31 +34,33 @@ const isBlaze = computed(() => currentMomentum.value >= MOMENTUM.max)
 <style scoped>
 .momentum-wrap {
   width: 200px;
-  margin: 8px auto 0;
+  margin: 10px auto 0;
 }
 .momentum-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 .momentum-label {
   font-size: 12px;
   color: var(--text-dim);
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
 }
 .momentum-tier {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--torch);
   font-family: var(--font-mono);
 }
 .momentum-tier.blazing {
   color: #ff6030;
-  text-shadow: 0 0 6px rgba(255, 96, 48, 0.5);
+  text-shadow: 0 0 8px rgba(255, 96, 48, 0.5);
   animation: torch-flicker 1s ease-in-out infinite;
 }
 .momentum-bonus {
-  font-size: 11px;
+  font-size: 10px;
   opacity: 0.7;
-  margin-left: 4px;
+  margin-left: 3px;
 }
 </style>

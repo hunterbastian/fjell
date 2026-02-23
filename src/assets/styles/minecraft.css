@@ -1,27 +1,27 @@
 /* ═══════════════════════════════════════════
-   Minecraft-style UI primitives
-   Beveled borders, inventory slots, fog, grain
+   Medieval UI Primitives
+   Beveled panels, slots, atmosphere overlays
    ═══════════════════════════════════════════ */
 
-/* Beveled panel — light top-left, dark bottom-right (Minecraft inventory style) */
+/* Beveled panel — light top-left, dark bottom-right */
 .bevel {
-  border: 2px solid;
-  border-color: var(--border-lit) var(--border) var(--border) var(--border-lit);
+  border: 1px solid var(--border-lit);
+  border-radius: var(--radius);
   box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.04),
-    inset -1px -1px 0 rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-/* Inset bevel — like inventory slots */
+/* Inset bevel — recessed surfaces */
 .bevel-inset {
-  border: 2px solid;
-  border-color: var(--border) var(--border-lit) var(--border-lit) var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   box-shadow:
-    inset 1px 1px 0 rgba(0, 0, 0, 0.3),
-    inset -1px -1px 0 rgba(255, 255, 255, 0.04);
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark vignette overlay */
+/* Dark vignette overlay — warm */
 .vignette::after {
   content: '';
   position: fixed;
@@ -30,20 +30,20 @@
   z-index: 100;
   background: radial-gradient(
     ellipse at center,
-    transparent 40%,
-    rgba(8, 8, 16, 0.4) 70%,
-    rgba(8, 8, 16, 0.8) 100%
+    transparent 35%,
+    rgba(10, 8, 6, 0.35) 65%,
+    rgba(10, 8, 6, 0.75) 100%
   );
 }
 
-/* Fog gradient — like Minecraft render distance */
+/* Fog gradients */
 .fog-top::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 60px;
   pointer-events: none;
   z-index: 50;
   background: linear-gradient(to bottom, var(--bg-void), transparent);
@@ -55,21 +55,21 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 40px;
   pointer-events: none;
   z-index: 50;
   background: linear-gradient(to top, var(--bg-void), transparent);
 }
 
-/* Noise grain texture overlay */
+/* Subtle noise texture overlay */
 .grain::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 99;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   background-size: 256px 256px;
 }
 
@@ -85,13 +85,8 @@
 /* Inventory slot style */
 .inv-slot {
   background: var(--bg-card);
-  border: 2px solid;
-  border-color: var(--border) var(--border-lit) var(--border-lit) var(--border);
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
   padding: 8px;
-}
-
-/* Sharp corners everywhere — override any border-radius */
-.sharp, .sharp * {
-  border-radius: 0 !important;
 }

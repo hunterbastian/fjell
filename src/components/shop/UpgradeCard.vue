@@ -35,17 +35,17 @@ function modeName(id) {
 function effectText(effects) {
   return effects.map(e => {
     switch (e.type) {
-      case 'click_mult': return `×${e.value} click power`
-      case 'building_mult': return `${buildingName(e.target)} ×${e.value}`
+      case 'click_mult': return `\u00D7${e.value} click power`
+      case 'building_mult': return `${buildingName(e.target)} \u00D7${e.value}`
       case 'storage_flat': return `+${fmt(e.value)} all storage`
       case 'momentum_gain_mult': return `+${Math.round((e.value - 1) * 100)}% momentum gain`
       case 'momentum_decay_mult': return `-${Math.round((1 - e.value) * 100)}% momentum decay`
       case 'crit_chance_flat': return `+${Math.round(e.value * 100)}% crit chance`
-      case 'crit_mult': return `×${e.value} crit damage`
+      case 'crit_mult': return `\u00D7${e.value} crit damage`
       case 'synergy': return `+${Math.round(e.value * 100)}% ${buildingName(e.source)} per ${buildingName(e.per)} lv`
       case 'synergy_total': return `+${Math.round(e.value * 100)}% ${buildingName(e.source)} per total bldg lv`
       case 'global_per_level': return `+${Math.round(e.value * 100)}% all prod per ${buildingName(e.per)} lv`
-      case 'mode_mult': return `×${e.value} ${modeName(e.target)} click`
+      case 'mode_mult': return `\u00D7${e.value} ${modeName(e.target)} click`
       case 'dual_focus': return 'Top 2 momentum modes never decay'
       default: return ''
     }
@@ -62,7 +62,7 @@ function handleBuy() {
 <template>
   <div
     v-if="unlocked || purchased"
-    class="upgrade-card bevel"
+    class="upgrade-card"
     :class="{ affordable: affordable && !purchased, purchased, locked: !unlocked && !purchased }"
     @click="affordable && !purchased ? handleBuy() : null"
   >
@@ -87,7 +87,7 @@ function handleBuy() {
         </span>
       </div>
     </div>
-    <div v-else class="card-check">✓</div>
+    <div v-else class="card-check">&#10003;</div>
   </div>
 </template>
 
@@ -97,11 +97,12 @@ function handleBuy() {
   grid-template-columns: 36px 1fr auto;
   align-items: center;
   gap: 10px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.12s;
-  margin-bottom: 6px;
+  transition: all 0.15s;
 }
 .upgrade-card.locked {
   opacity: 0.3;
@@ -110,14 +111,17 @@ function handleBuy() {
 .upgrade-card.purchased {
   opacity: 0.55;
   cursor: default;
-  border-color: var(--success) var(--border) var(--border) var(--success);
+  border-color: rgba(58, 122, 40, 0.4);
 }
 .upgrade-card.affordable {
-  border-color: var(--torch-dim) var(--border) var(--border) var(--torch-dim);
+  border-color: var(--torch-dim);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(232, 160, 48, 0.03) 100%);
 }
 .upgrade-card.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px var(--torch-glow);
+  box-shadow: 0 0 12px var(--torch-glow), 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-color: var(--torch);
+  transform: translateY(-1px);
 }
 .upgrade-card:not(.affordable):not(.purchased) {
   cursor: default;
@@ -142,10 +146,12 @@ function handleBuy() {
 }
 .card-owned {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9px;
   color: var(--success);
-  background: var(--bg-dark);
-  padding: 0 4px;
+  background: rgba(58, 122, 40, 0.1);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
 }
 .card-desc {
   font-size: 14px;
@@ -182,7 +188,7 @@ function handleBuy() {
   font-weight: 700;
 }
 .card-check {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--success);
   text-align: center;
 }

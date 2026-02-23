@@ -1,47 +1,51 @@
 :root {
-  /* Depths */
-  --bg-void:    #080810;
-  --bg-dark:    #0e1018;
-  --bg:         #161822;
-  --bg-panel:   #1e2230;
-  --bg-card:    #252a3a;
-  --bg-card-hover: #2c3248;
+  /* Depths — warm charcoal-brown palette */
+  --bg-void:    #0a0806;
+  --bg-dark:    #141210;
+  --bg:         #1c1914;
+  --bg-panel:   #231f19;
+  --bg-card:    #2a2520;
+  --bg-card-hover: #342e27;
 
-  /* Borders */
-  --border:     #3a3f50;
-  --border-lit: #4a5060;
-  --border-highlight: #5a6078;
+  /* Borders — aged iron / bronze */
+  --border:     #3d362c;
+  --border-lit: #544a3c;
+  --border-highlight: #6b5e4d;
 
-  /* Text */
-  --text:       #c8c0b0;
-  --text-dim:   #5a5868;
-  --text-mid:   #8a8498;
+  /* Text — parchment / cream */
+  --text:       #d4c8b0;
+  --text-dim:   #6d6050;
+  --text-mid:   #9a8c78;
 
-  /* Torchlight */
+  /* Torchlight — warm golden orange */
   --torch:      #e8a030;
   --torch-dim:  #b07820;
   --torch-glow: rgba(232, 160, 48, 0.25);
-  --torch-glow-strong: rgba(232, 160, 48, 0.45);
+  --torch-glow-strong: rgba(232, 160, 48, 0.5);
+  --torch-warm: rgba(255, 180, 60, 0.08);
 
   /* Resources */
   --gold:   #d4a017;
-  --wood:   #6b4423;
-  --stone:  #5a6472;
-  --food:   #3a6a20;
+  --wood:   #8b5e3c;
+  --stone:  #7a7568;
+  --food:   #5a8a30;
   --iron:   #8a8a94;
-  --faith:  #7040a0;
+  --faith:  #9060c0;
 
   /* Accents */
-  --dark:     #3a0060;
-  --danger:   #8a2020;
-  --success:  #206a30;
+  --dark:     #5a2080;
+  --danger:   #a03030;
+  --success:  #3a7a28;
   --crown:    #d4a017;
 
   /* Typography */
   --font-display: 'Cinzel', serif;
-  --font-body: 'VT323', monospace;
-  --font-mono: 'Space Mono', monospace;
+  --font-body: 'Crimson Text', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   /* Sizing */
   --unit: 4px;
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-lg: 6px;
 }

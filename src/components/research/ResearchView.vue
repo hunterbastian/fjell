@@ -71,7 +71,7 @@ function getNodeRows(nodes) {
       <div
         v-for="branch in branches"
         :key="branch.id"
-        class="branch bevel-inset"
+        class="branch"
       >
         <div class="branch-header">
           <span class="branch-name" :style="{ color: branch.color }">
@@ -112,7 +112,7 @@ function getNodeRows(nodes) {
   flex-shrink: 0;
   padding: 10px 14px;
   background: var(--bg-dark);
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -126,9 +126,12 @@ function getNodeRows(nodes) {
 .rp-label {
   font-size: 13px;
   color: var(--text-dim);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 .rp-value {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--faith);
   font-weight: 700;
 }
@@ -137,7 +140,7 @@ function getNodeRows(nodes) {
   color: var(--success);
 }
 .rp-hint {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-dim);
   font-style: italic;
 }
@@ -163,29 +166,31 @@ function getNodeRows(nodes) {
 .branch-scroll {
   flex: 1;
   overflow-y: auto;
-  padding: 8px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .branch {
   background: var(--bg-dark);
-  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
 }
 .branch-header {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: flex;
   align-items: baseline;
   gap: 8px;
 }
 .branch-name {
   font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
 }
 .branch-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-dim);
 }
 
@@ -201,9 +206,9 @@ function getNodeRows(nodes) {
   align-items: center;
 }
 .row-connector {
-  width: 2px;
+  width: 1px;
   height: 8px;
-  background: var(--border);
+  background: var(--border-lit);
 }
 .node-group {
   display: flex;

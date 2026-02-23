@@ -75,23 +75,24 @@ onMounted(() => {
     <EventModal />
 
     <GameModal :show="!!gameStore.offlineEarnings" @close="gameStore.dismissOffline()">
-      <h2 class="display-title" style="margin-bottom: 12px; font-size: 18px;">
+      <h2 class="display-title" style="margin-bottom: 12px; font-size: 17px;">
         Welcome back, Lord
       </h2>
-      <p style="color: var(--text-dim); margin-bottom: 16px;">
+      <p style="color: var(--text-dim); margin-bottom: 16px; font-size: 14px;">
         You were away for {{ gameStore.offlineEarnings ? fmtTimeLong(gameStore.offlineEarnings.seconds) : '' }}
       </p>
-      <button class="offline-btn bevel" @click="gameStore.dismissOffline()">
+      <button class="offline-btn" @click="gameStore.dismissOffline()">
         Continue
       </button>
     </GameModal>
 
+    <!-- Floating embers -->
     <div class="particles" aria-hidden="true">
-      <span v-for="i in 12" :key="i" class="dust" :style="{
+      <span v-for="i in 8" :key="i" class="ember" :style="{
         left: (Math.random() * 100) + '%',
-        animationDuration: (4 + Math.random() * 6) + 's',
-        animationDelay: (Math.random() * 8) + 's',
-        opacity: 0.15 + Math.random() * 0.2,
+        animationDuration: (5 + Math.random() * 8) + 's',
+        animationDelay: (Math.random() * 10) + 's',
+        opacity: 0.12 + Math.random() * 0.15,
         width: (1 + Math.random() * 2) + 'px',
         height: (1 + Math.random() * 2) + 'px',
       }" />
@@ -107,6 +108,7 @@ onMounted(() => {
   height: 100dvh;
   position: relative;
   overflow: hidden;
+  background: var(--bg);
 }
 .game-main {
   flex: 1;
@@ -124,20 +126,28 @@ onMounted(() => {
 }
 .placeholder-text {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 16px;
   color: var(--text-dim);
   letter-spacing: 2px;
   text-transform: capitalize;
 }
 .offline-btn {
   background: var(--bg-card);
-  padding: 8px 24px;
-  font-size: 18px;
+  padding: 9px 24px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
   color: var(--torch);
   display: block;
   margin: 0 auto;
+  border: 1px solid var(--torch-dim);
+  border-radius: var(--radius);
+  transition: all 0.15s;
 }
-.offline-btn:hover { background: var(--bg-card-hover); }
+.offline-btn:hover {
+  background: var(--bg-card-hover);
+  box-shadow: 0 0 10px var(--torch-glow);
+}
 .particles {
   position: fixed;
   inset: 0;
@@ -145,11 +155,12 @@ onMounted(() => {
   z-index: 1;
   overflow: hidden;
 }
-.dust {
+.ember {
   position: absolute;
   bottom: -4px;
   background: var(--torch);
   border-radius: 50%;
   animation: float-up linear infinite;
+  box-shadow: 0 0 4px var(--torch-glow);
 }
 </style>

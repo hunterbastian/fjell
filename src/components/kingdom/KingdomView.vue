@@ -29,7 +29,14 @@ function onClickResult(result) {
 
 <template>
   <div class="kingdom-view">
-    <div class="anvil-area">
+    <!-- Atmospheric background layers -->
+    <div class="kingdom-bg" aria-hidden="true">
+      <div class="bg-gradient" />
+      <div class="bg-torch-left" />
+      <div class="bg-torch-right" />
+    </div>
+
+    <div class="anvil-area fade-in">
       <DarkAnvil @click-result="onClickResult" />
       <div class="click-power mono">{{ clickPower }}</div>
       <MomentumBar />
@@ -44,14 +51,53 @@ function onClickResult(result) {
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
   padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.kingdom-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    rgba(232, 160, 48, 0.04) 0%,
+    transparent 60%
+  );
+}
+.bg-torch-left {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 120px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(232, 160, 48, 0.06) 0%, transparent 70%);
+  animation: torch-flicker 4s ease-in-out infinite;
+}
+.bg-torch-right {
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  width: 100px;
+  height: 180px;
+  background: radial-gradient(ellipse, rgba(232, 160, 48, 0.04) 0%, transparent 70%);
+  animation: torch-flicker 5s ease-in-out infinite;
+  animation-delay: 1.5s;
 }
 .anvil-area {
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 .click-power {
   font-size: 13px;
   color: var(--text-mid);
-  margin-top: 8px;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
 }
 </style>

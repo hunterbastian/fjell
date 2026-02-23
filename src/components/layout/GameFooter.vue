@@ -10,7 +10,7 @@ const clicksFormatted = computed(() => fmt(gameStore.totalClicks))
 </script>
 
 <template>
-  <footer class="game-footer bevel">
+  <footer class="game-footer">
     <span class="stat">Clicks <b>{{ clicksFormatted }}</b></span>
     <span class="stat-sep" />
     <span class="stat">Time <b>{{ playTimeFormatted }}</b></span>
@@ -23,12 +23,13 @@ const clicksFormatted = computed(() => fmt(gameStore.totalClicks))
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 4px 16px;
+  padding: 5px 16px;
   background: var(--bg-dark);
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
 .stat {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-dim);
 }
 .stat b {
@@ -38,7 +39,7 @@ const clicksFormatted = computed(() => fmt(gameStore.totalClicks))
 }
 .stat-sep {
   width: 1px;
-  height: 12px;
+  height: 10px;
   background: var(--border);
 }
 </style>

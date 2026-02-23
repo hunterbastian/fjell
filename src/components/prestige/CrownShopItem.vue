@@ -27,7 +27,7 @@ function handleBuy() {
 
 <template>
   <div
-    class="crown-item bevel"
+    class="crown-item"
     :class="{ affordable: affordable && !maxed, maxed }"
     @click="affordable && !maxed ? handleBuy() : null"
   >
@@ -42,7 +42,7 @@ function handleBuy() {
       <div class="item-desc">{{ item.desc }}</div>
     </div>
     <div class="item-cost" v-if="!maxed">
-      <span class="crown-icon">👑</span>
+      <span class="crown-icon">&#128081;</span>
       <span class="crown-val" :class="{ 'crown-short': !affordable }">{{ fmt(cost) }}</span>
     </div>
     <div class="item-cost maxed-label" v-else>
@@ -57,22 +57,25 @@ function handleBuy() {
   grid-template-columns: 40px 1fr auto;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.12s;
-  margin-bottom: 6px;
+  transition: all 0.15s;
 }
 .crown-item.maxed {
   opacity: 0.5;
   cursor: default;
 }
 .crown-item.affordable {
-  border-color: var(--gold) var(--border) var(--border) var(--gold);
+  border-color: rgba(212, 160, 23, 0.4);
 }
 .crown-item.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px rgba(212, 160, 23, 0.25);
+  box-shadow: 0 0 12px rgba(212, 160, 23, 0.2);
+  border-color: var(--gold);
+  transform: translateY(-1px);
 }
 .crown-item:not(.affordable):not(.maxed) {
   cursor: default;
@@ -96,13 +99,15 @@ function handleBuy() {
 }
 .item-level {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--gold);
-  background: var(--bg-dark);
-  padding: 0 4px;
+  background: rgba(212, 160, 23, 0.1);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
 }
 .item-level.level-max {
   color: var(--success);
+  background: rgba(58, 122, 40, 0.1);
 }
 .item-desc {
   font-size: 14px;

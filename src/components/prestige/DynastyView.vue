@@ -47,7 +47,7 @@ function handleShopBuy(name, level) {
       <div class="dynasty-title-row">
         <h2 class="display-title dynasty-name">{{ dynastyLabel }}</h2>
         <div class="crown-balance">
-          <span class="crown-icon">👑</span>
+          <span class="crown-icon">&#128081;</span>
           <span class="crown-count">{{ fmt(prestige.availableCrowns) }}</span>
         </div>
       </div>
@@ -85,14 +85,14 @@ function handleShopBuy(name, level) {
 
       <div class="prestige-reward" v-if="prestige.pendingCrowns > 0">
         <span class="reward-label">Crowns earned:</span>
-        <span class="reward-val">+{{ fmt(prestige.pendingCrowns) }} 👑</span>
+        <span class="reward-val">+{{ fmt(prestige.pendingCrowns) }} &#128081;</span>
       </div>
       <div class="prestige-reward" v-else>
         <span class="reward-label dim">Earn more resources to gain crowns</span>
       </div>
 
       <button
-        class="prestige-btn bevel"
+        class="prestige-btn"
         :class="{ ready: prestige.canPrestige }"
         :disabled="!prestige.canPrestige"
         @click="attemptPrestige"
@@ -131,13 +131,13 @@ function handleShopBuy(name, level) {
         </div>
         <div class="confirm-gain">
           <p>You will receive:</p>
-          <span class="gain-crowns">+{{ fmt(prestige.pendingCrowns) }} 👑 Crowns</span>
+          <span class="gain-crowns">+{{ fmt(prestige.pendingCrowns) }} &#128081; Crowns</span>
         </div>
         <div class="confirm-buttons">
-          <button class="bevel cancel-btn" @click="showConfirm = false">
+          <button class="cancel-btn" @click="showConfirm = false">
             Cancel
           </button>
-          <button class="bevel confirm-btn" @click="confirmPrestige">
+          <button class="confirm-btn" @click="confirmPrestige">
             Destroy &amp; Rebuild
           </button>
         </div>
@@ -158,14 +158,11 @@ function handleShopBuy(name, level) {
 }
 
 /* Header */
-.dynasty-header {
-  background: var(--bg-panel);
-}
 .dynasty-title-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .dynasty-name {
   font-size: 18px;
@@ -176,7 +173,7 @@ function handleShopBuy(name, level) {
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 17px;
 }
 .crown-icon {
   font-size: 20px;
@@ -188,7 +185,7 @@ function handleShopBuy(name, level) {
 
 .dynasty-stats {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 .stat-item {
@@ -210,12 +207,9 @@ function handleShopBuy(name, level) {
 }
 
 /* Prestige Section */
-.prestige-section {
-  background: var(--bg-panel);
-}
 .section-title {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14px;
   color: var(--torch);
   margin: 0 0 8px 0;
   letter-spacing: 1px;
@@ -223,8 +217,8 @@ function handleShopBuy(name, level) {
 .prestige-desc {
   font-size: 14px;
   color: var(--text-dim);
-  margin: 0 0 12px 0;
-  line-height: 1.4;
+  margin: 0 0 14px 0;
+  line-height: 1.5;
 }
 
 .prestige-req {
@@ -246,7 +240,7 @@ function handleShopBuy(name, level) {
 }
 
 .prestige-reward {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-size: 14px;
 }
 .reward-label {
@@ -266,32 +260,33 @@ function handleShopBuy(name, level) {
 .prestige-btn {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 11px;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--text-dim);
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   letter-spacing: 1px;
-  transition: all 0.15s;
+  transition: all 0.2s;
 }
 .prestige-btn:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 .prestige-btn.ready {
   color: var(--gold);
-  border-color: var(--gold) var(--border) var(--border) var(--gold);
+  border-color: rgba(212, 160, 23, 0.4);
   animation: torch-flicker 3s ease-in-out infinite;
 }
 .prestige-btn.ready:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 16px rgba(212, 160, 23, 0.35);
+  box-shadow: 0 0 16px rgba(212, 160, 23, 0.3);
+  border-color: var(--gold);
 }
 
 /* Shop Section */
-.shop-section {
-  background: var(--bg-panel);
-}
 .shop-desc {
   font-size: 14px;
   color: var(--text-dim);
@@ -300,6 +295,7 @@ function handleShopBuy(name, level) {
 .shop-list {
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
 /* Confirmation Modal */
@@ -307,7 +303,7 @@ function handleShopBuy(name, level) {
   text-align: center;
 }
 .confirm-title {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--danger);
   margin-bottom: 16px;
 }
@@ -348,22 +344,31 @@ function handleShopBuy(name, level) {
 }
 .cancel-btn {
   background: var(--bg-card);
-  padding: 8px 20px;
+  padding: 9px 20px;
   color: var(--text-dim);
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.15s;
 }
 .cancel-btn:hover {
   background: var(--bg-card-hover);
 }
 .confirm-btn {
   background: var(--bg-card);
-  padding: 8px 20px;
+  padding: 9px 20px;
   color: var(--danger);
-  font-size: 16px;
-  border-color: var(--danger) var(--border) var(--border) var(--danger);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(160, 48, 48, 0.4);
+  border-radius: var(--radius);
+  transition: all 0.15s;
 }
 .confirm-btn:hover {
-  background: rgba(138, 32, 32, 0.2);
-  box-shadow: 0 0 10px rgba(138, 32, 32, 0.3);
+  background: rgba(160, 48, 48, 0.15);
+  box-shadow: 0 0 10px rgba(160, 48, 48, 0.2);
 }
 </style>

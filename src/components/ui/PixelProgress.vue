@@ -5,7 +5,7 @@ const props = defineProps({
   value: { type: Number, default: 0 },
   max: { type: Number, default: 100 },
   color: { type: String, default: 'var(--torch)' },
-  height: { type: Number, default: 8 },
+  height: { type: Number, default: 6 },
 })
 
 const percent = computed(() =>
@@ -14,7 +14,7 @@ const percent = computed(() =>
 </script>
 
 <template>
-  <div class="progress bevel-inset" :style="{ height: height + 'px' }">
+  <div class="progress" :style="{ height: height + 'px' }">
     <div
       class="progress-fill"
       :style="{ width: percent + '%', background: color }"
@@ -27,10 +27,13 @@ const percent = computed(() =>
   background: var(--bg-dark);
   overflow: hidden;
   position: relative;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .progress-fill {
   height: 100%;
   transition: width 0.15s linear;
-  box-shadow: 0 0 4px currentColor;
+  border-radius: 1px;
+  box-shadow: 0 0 6px currentColor;
 }
 </style>

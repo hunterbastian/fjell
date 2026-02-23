@@ -45,7 +45,7 @@ const canDismiss = computed(() => {
         <button
           v-for="(choice, i) in events.activeEvent.choices"
           :key="i"
-          class="choice-btn bevel"
+          class="choice-btn"
           @click="events.selectChoice(i)"
         >
           <span class="choice-label">{{ choice.label }}</span>
@@ -62,7 +62,7 @@ const canDismiss = computed(() => {
 
       <button
         v-if="canDismiss"
-        class="dismiss-btn bevel"
+        class="dismiss-btn"
         @click="events.dismissEvent()"
       >
         Continue
@@ -80,16 +80,17 @@ const canDismiss = computed(() => {
 
 .event-type-badge {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: 2px 8px;
+  padding: 3px 10px;
   display: inline-block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  border-radius: var(--radius-sm);
 }
-.event-type-badge.positive { color: var(--success); border: 1px solid var(--success); }
-.event-type-badge.negative { color: var(--danger); border: 1px solid var(--danger); }
-.event-type-badge.choice { color: var(--faith); border: 1px solid var(--faith); }
+.event-type-badge.positive { color: var(--success); border: 1px solid rgba(58, 122, 40, 0.4); background: rgba(58, 122, 40, 0.08); }
+.event-type-badge.negative { color: var(--danger); border: 1px solid rgba(160, 48, 48, 0.4); background: rgba(160, 48, 48, 0.08); }
+.event-type-badge.choice { color: var(--faith); border: 1px solid rgba(144, 96, 192, 0.4); background: rgba(144, 96, 192, 0.08); }
 
 .event-icon {
   font-size: 40px;
@@ -97,43 +98,47 @@ const canDismiss = computed(() => {
 }
 
 .event-title {
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 8px;
 }
 
 .event-desc {
   color: var(--text-dim);
   font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
 .event-result {
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--torch);
-  padding: 8px;
+  padding: 10px;
   background: var(--bg-dark);
-  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
 }
 
 .event-choices {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .choice-btn {
   text-align: left;
-  padding: 10px 12px;
+  padding: 12px 14px;
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.12s;
+  transition: all 0.15s;
 }
 .choice-btn:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 8px var(--torch-glow);
-  border-color: var(--torch-dim) var(--border) var(--border) var(--torch-dim);
+  box-shadow: 0 0 10px var(--torch-glow);
+  border-color: var(--torch-dim);
 }
 .choice-label {
   display: block;
@@ -145,12 +150,12 @@ const canDismiss = computed(() => {
 }
 .choice-desc {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-dim);
 }
 
 .choice-result {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .chosen-label {
   font-family: var(--font-mono);
@@ -161,13 +166,19 @@ const canDismiss = computed(() => {
 
 .dismiss-btn {
   background: var(--bg-card);
-  padding: 8px 28px;
-  font-size: 18px;
+  padding: 9px 28px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
   color: var(--torch);
+  border: 1px solid var(--torch-dim);
+  border-radius: var(--radius);
   margin: 0 auto;
   display: block;
+  transition: all 0.15s;
 }
 .dismiss-btn:hover {
   background: var(--bg-card-hover);
+  box-shadow: 0 0 10px var(--torch-glow);
 }
 </style>

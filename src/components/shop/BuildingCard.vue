@@ -41,7 +41,7 @@ function handleBuy() {
 <template>
   <div
     v-if="unlocked || level > 0"
-    class="building-card bevel"
+    class="building-card"
     :class="{ affordable, locked: !unlocked }"
     @click="affordable ? handleBuy() : null"
   >
@@ -83,22 +83,26 @@ function handleBuy() {
   grid-template-columns: 40px 1fr auto;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.12s;
-  margin-bottom: 6px;
+  transition: all 0.15s;
 }
 .building-card.locked {
   opacity: 0.3;
   pointer-events: none;
 }
 .building-card.affordable {
-  border-color: var(--torch-dim) var(--border) var(--border) var(--torch-dim);
+  border-color: var(--torch-dim);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(232, 160, 48, 0.03) 100%);
 }
 .building-card.affordable:hover {
   background: var(--bg-card-hover);
-  box-shadow: 0 0 10px var(--torch-glow);
+  box-shadow: 0 0 12px var(--torch-glow), 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-color: var(--torch);
+  transform: translateY(-1px);
 }
 .building-card:not(.affordable) {
   cursor: default;
@@ -123,10 +127,11 @@ function handleBuy() {
 }
 .card-level {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--torch);
-  background: var(--bg-dark);
-  padding: 0 4px;
+  background: rgba(232, 160, 48, 0.1);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
 }
 .card-desc {
   font-size: 14px;

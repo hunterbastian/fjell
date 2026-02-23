@@ -47,6 +47,9 @@ function handleClick(e) {
     <div class="rune-ring rune-ring--outer" />
     <div class="rune-ring rune-ring--inner" />
 
+    <!-- Ambient glow -->
+    <div class="anvil-ambient" />
+
     <!-- The anvil -->
     <div ref="anvilRef" class="dark-anvil" @click="handleClick">
       <div class="anvil-icon">&#9876;</div>
@@ -77,12 +80,23 @@ function handleClick(e) {
   margin: 0 auto;
 }
 
+/* Ambient glow behind the anvil */
+.anvil-ambient {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 160, 48, 0.08) 0%, transparent 70%);
+  animation: torch-flicker 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
 /* Rune circles */
 .rune-ring {
   position: absolute;
   border: 1px solid var(--torch-dim);
   border-radius: 50%;
-  opacity: 0.2;
+  opacity: 0.15;
 }
 .rune-ring--outer {
   inset: 0;
@@ -97,44 +111,49 @@ function handleClick(e) {
 
 /* The anvil button */
 .dark-anvil {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  background: radial-gradient(circle at 40% 35%, #3a3a5a, #1e1e32 50%, #0e0e18 100%);
-  border: 2px solid;
-  border-color: var(--border-lit) var(--border) var(--border) var(--border-lit);
+  background: radial-gradient(circle at 40% 35%, #3a3428, #231e16 50%, #12100c 100%);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-lg);
   box-shadow:
-    0 0 30px rgba(232, 160, 48, 0.1),
-    0 0 60px rgba(232, 160, 48, 0.05),
-    inset 0 0 20px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.2s;
+    0 0 40px rgba(232, 160, 48, 0.08),
+    0 0 80px rgba(232, 160, 48, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s, transform 0.1s;
 }
 .dark-anvil:hover {
   box-shadow:
-    0 0 40px var(--torch-glow),
-    0 0 80px rgba(232, 160, 48, 0.1),
-    inset 0 0 20px rgba(0, 0, 0, 0.4);
+    0 0 50px var(--torch-glow),
+    0 0 100px rgba(232, 160, 48, 0.08),
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 30px rgba(0, 0, 0, 0.3);
 }
 .dark-anvil:active {
-  border-color: var(--border) var(--border-lit) var(--border-lit) var(--border);
+  transform: scale(0.97);
 }
 
 .anvil-icon {
-  font-size: 48px;
+  font-size: 44px;
   color: var(--torch);
-  text-shadow: 0 0 16px var(--torch-glow-strong);
+  text-shadow: 0 0 20px var(--torch-glow-strong);
   transition: transform 0.1s;
-  filter: drop-shadow(0 0 8px var(--torch-glow));
+  filter: drop-shadow(0 0 10px var(--torch-glow));
 }
 
 .anvil-glow {
   position: absolute;
   inset: -4px;
+  border-radius: var(--radius-lg);
   opacity: 0;
   box-shadow: 0 0 40px var(--torch-glow-strong);
   transition: opacity 0.15s;
@@ -161,7 +180,7 @@ function handleClick(e) {
   font-weight: 700;
   font-size: 16px;
   color: var(--torch);
-  text-shadow: 0 0 6px var(--torch-glow), 0 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 0 0 8px var(--torch-glow), 0 1px 3px rgba(0,0,0,0.9);
   pointer-events: none;
   z-index: 10;
   animation: float-number 0.9s ease-out forwards;
@@ -170,6 +189,6 @@ function handleClick(e) {
 .float-crit {
   font-size: 22px;
   color: #ff6040;
-  text-shadow: 0 0 12px rgba(255, 96, 64, 0.6);
+  text-shadow: 0 0 14px rgba(255, 96, 64, 0.6), 0 1px 3px rgba(0,0,0,0.9);
 }
 </style>

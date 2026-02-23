@@ -1,15 +1,15 @@
 /* ═══════════════════════════════════════════
-   Animations — flicker, float, pulse, grain
+   Animations — flicker, float, pulse, atmosphere
    ═══════════════════════════════════════════ */
 
-/* Torch flicker — subtle brightness oscillation */
+/* Torch flicker — subtle warm oscillation */
 @keyframes torch-flicker {
   0%, 100% { opacity: 1; }
-  10% { opacity: 0.92; }
+  10% { opacity: 0.94; }
   20% { opacity: 0.98; }
-  35% { opacity: 0.88; }
-  50% { opacity: 0.95; }
-  65% { opacity: 0.90; }
+  35% { opacity: 0.90; }
+  50% { opacity: 0.96; }
+  65% { opacity: 0.92; }
   80% { opacity: 0.97; }
   90% { opacity: 0.93; }
 }
@@ -18,24 +18,24 @@
   animation: torch-flicker 3s ease-in-out infinite;
 }
 
-/* Floating dust particles */
+/* Floating dust / embers */
 @keyframes float-up {
   0% {
     opacity: 0;
     transform: translateY(0) translateX(0);
   }
-  10% { opacity: 0.4; }
-  90% { opacity: 0.2; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.15; }
   100% {
     opacity: 0;
-    transform: translateY(-120px) translateX(20px);
+    transform: translateY(-140px) translateX(25px);
   }
 }
 
 /* Gentle pulse */
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+  50% { transform: scale(1.015); }
 }
 
 .pulse {
@@ -132,4 +132,10 @@
 
 .blazing {
   animation: blaze 1.5s ease-in-out infinite;
+}
+
+/* Warm shimmer for golden elements */
+@keyframes warm-shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
 }

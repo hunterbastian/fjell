@@ -32,34 +32,40 @@ defineExpose({ activeTab })
 .main-nav {
   display: flex;
   background: var(--bg-dark);
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
+  gap: 1px;
 }
 .nav-tab {
   flex: 1;
-  padding: 8px 4px;
-  font-size: 16px;
+  padding: 9px 4px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   color: var(--text-dim);
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.2s, background 0.2s;
   position: relative;
   text-align: center;
+  text-transform: uppercase;
 }
 .nav-tab:hover {
   color: var(--text-mid);
-  background: var(--bg-panel);
+  background: rgba(255, 255, 255, 0.02);
 }
 .nav-tab.active {
   color: var(--torch);
-  background: var(--bg-panel);
+  background: rgba(232, 160, 48, 0.04);
 }
 .nav-tab.active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 8px;
-  right: 8px;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
   height: 2px;
   background: var(--torch);
-  box-shadow: 0 0 6px var(--torch-glow);
+  border-radius: 1px 1px 0 0;
+  box-shadow: 0 0 8px var(--torch-glow);
 }
 </style>

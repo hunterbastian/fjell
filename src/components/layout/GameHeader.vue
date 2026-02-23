@@ -14,8 +14,11 @@ function manualSave() {
 </script>
 
 <template>
-  <header class="game-header bevel">
-    <h1 class="game-title display-title flicker">FJELL</h1>
+  <header class="game-header">
+    <div class="header-brand">
+      <div class="brand-sigil">&#9876;</div>
+      <h1 class="game-title display-title flicker">FJELL</h1>
+    </div>
     <div class="header-spacer" />
     <PixelButton small @click="manualSave">
       {{ saveFlash ? 'SAVED' : 'SAVE' }}
@@ -27,15 +30,27 @@ function manualSave() {
 .game-header {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
-  background: var(--bg-dark);
+  padding: 10px 16px;
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
   gap: 12px;
   flex-shrink: 0;
   z-index: 10;
 }
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-sigil {
+  font-size: 18px;
+  color: var(--torch);
+  filter: drop-shadow(0 0 6px var(--torch-glow));
+  opacity: 0.7;
+}
 .game-title {
-  font-size: 16px;
-  letter-spacing: 4px;
+  font-size: 15px;
+  letter-spacing: 6px;
 }
 .header-spacer {
   flex: 1;

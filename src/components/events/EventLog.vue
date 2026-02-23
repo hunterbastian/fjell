@@ -33,17 +33,17 @@ function timeAgo(timestamp) {
 
 <style scoped>
 .event-log {
-  padding: 6px 8px;
+  padding: 8px 10px;
   max-height: 200px;
   overflow-y: auto;
 }
 .log-header {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-dim);
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .log-entries {
   display: flex;
@@ -54,9 +54,14 @@ function timeAgo(timestamp) {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 4px;
-  font-size: 12px;
+  padding: 4px 6px;
+  font-size: 13px;
   border-left: 2px solid var(--border);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: background 0.15s;
+}
+.log-entry:hover {
+  background: rgba(255, 255, 255, 0.02);
 }
 .log-entry.positive { border-left-color: var(--success); }
 .log-entry.negative { border-left-color: var(--danger); }
@@ -70,7 +75,7 @@ function timeAgo(timestamp) {
 }
 .log-name {
   color: var(--text);
-  font-size: 12px;
+  font-size: 13px;
 }
 .log-time {
   font-family: var(--font-mono);
