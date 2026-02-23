@@ -88,13 +88,13 @@ onMounted(() => {
 
     <!-- Floating embers -->
     <div class="particles" aria-hidden="true">
-      <span v-for="i in 8" :key="i" class="ember" :style="{
+      <span v-for="i in 12" :key="i" class="ember" :style="{
         left: (Math.random() * 100) + '%',
-        animationDuration: (5 + Math.random() * 8) + 's',
-        animationDelay: (Math.random() * 10) + 's',
-        opacity: 0.12 + Math.random() * 0.15,
-        width: (1 + Math.random() * 2) + 'px',
-        height: (1 + Math.random() * 2) + 'px',
+        animationDuration: (6 + Math.random() * 10) + 's',
+        animationDelay: (Math.random() * 12) + 's',
+        opacity: 0.08 + Math.random() * 0.18,
+        width: (1 + Math.random() * 2.5) + 'px',
+        height: (1 + Math.random() * 2.5) + 'px',
       }" />
     </div>
   </div>

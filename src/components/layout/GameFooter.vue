@@ -11,9 +11,11 @@ const clicksFormatted = computed(() => fmt(gameStore.totalClicks))
 
 <template>
   <footer class="game-footer">
+    <span class="footer-ornament">─ ◆ ─</span>
     <span class="stat">Clicks <b>{{ clicksFormatted }}</b></span>
-    <span class="stat-sep" />
+    <span class="stat-diamond">◇</span>
     <span class="stat">Time <b>{{ playTimeFormatted }}</b></span>
+    <span class="footer-ornament">─ ◆ ─</span>
   </footer>
 </template>
 
@@ -22,24 +24,43 @@ const clicksFormatted = computed(() => fmt(gameStore.totalClicks))
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 5px 16px;
+  gap: 12px;
+  padding: 6px 16px;
   background: var(--bg-dark);
   border-top: 1px solid var(--border);
   flex-shrink: 0;
+  position: relative;
+}
+.game-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--torch-dim), transparent);
+  opacity: 0.3;
 }
 .stat {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-dim);
+  font-family: var(--font-body);
 }
 .stat b {
   color: var(--text-mid);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
 }
-.stat-sep {
-  width: 1px;
-  height: 10px;
-  background: var(--border);
+.stat-diamond {
+  font-size: 6px;
+  color: var(--border-lit);
+  opacity: 0.5;
+}
+.footer-ornament {
+  font-size: 8px;
+  color: var(--border);
+  opacity: 0.3;
+  letter-spacing: 2px;
 }
 </style>

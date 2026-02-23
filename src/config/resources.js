@@ -1,10 +1,10 @@
 export const RESOURCES = [
-  { id: 'gold',  name: 'Gold',  icon: 'G', color: 'var(--gold)',  startCap: 1000 },
-  { id: 'wood',  name: 'Wood',  icon: 'W', color: 'var(--wood)',  startCap: 1000 },
-  { id: 'stone', name: 'Stone', icon: 'S', color: 'var(--stone)', startCap: 1000 },
-  { id: 'food',  name: 'Food',  icon: 'F', color: 'var(--food)',  startCap: 1000 },
-  { id: 'iron',  name: 'Iron',  icon: 'I', color: 'var(--iron)',  startCap: 1000 },
-  { id: 'faith', name: 'Faith', icon: 'P', color: 'var(--faith)', startCap: 1000 },
+  { id: 'gold',  name: 'Gold',  icon: '🪙', letter: 'G', color: 'var(--gold)',  startCap: 1000 },
+  { id: 'wood',  name: 'Wood',  icon: '🪵', letter: 'W', color: 'var(--wood)',  startCap: 1000 },
+  { id: 'stone', name: 'Stone', icon: '🪨', letter: 'S', color: 'var(--stone)', startCap: 1000 },
+  { id: 'food',  name: 'Food',  icon: '🌾', letter: 'F', color: 'var(--food)',  startCap: 1000 },
+  { id: 'iron',  name: 'Iron',  icon: '⛏️', letter: 'I', color: 'var(--iron)',  startCap: 1000 },
+  { id: 'faith', name: 'Faith', icon: '✦',  letter: 'P', color: 'var(--faith)', startCap: 1000 },
 ]
 
 // Lookup map for quick access

@@ -52,9 +52,17 @@ function handleClick(e) {
 
     <!-- The anvil -->
     <div ref="anvilRef" class="dark-anvil" @click="handleClick">
-      <div class="anvil-icon">&#9876;</div>
+      <div class="anvil-face">
+        <div class="anvil-icon">⚔</div>
+      </div>
       <div class="anvil-glow" />
     </div>
+
+    <!-- Corner accents on the anvil -->
+    <div class="anvil-accent anvil-accent--tl" />
+    <div class="anvil-accent anvil-accent--tr" />
+    <div class="anvil-accent anvil-accent--bl" />
+    <div class="anvil-accent anvil-accent--br" />
 
     <!-- Floating numbers -->
     <div
@@ -75,18 +83,18 @@ function handleClick(e) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   margin: 0 auto;
 }
 
 /* Ambient glow behind the anvil */
 .anvil-ambient {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232, 160, 48, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 160, 48, 0.1) 0%, rgba(232, 160, 48, 0.03) 40%, transparent 70%);
   animation: torch-flicker 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -96,7 +104,7 @@ function handleClick(e) {
   position: absolute;
   border: 1px solid var(--torch-dim);
   border-radius: 50%;
-  opacity: 0.15;
+  opacity: 0.12;
 }
 .rune-ring--outer {
   inset: 0;
@@ -104,58 +112,87 @@ function handleClick(e) {
   border-style: dashed;
 }
 .rune-ring--inner {
-  inset: 20px;
+  inset: 22px;
   animation: rune-spin 12s linear infinite reverse;
   border-style: dotted;
+  opacity: 0.08;
 }
 
 /* The anvil button */
 .dark-anvil {
-  width: 130px;
-  height: 130px;
+  width: 140px;
+  height: 140px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  background: radial-gradient(circle at 40% 35%, #3a3428, #231e16 50%, #12100c 100%);
+  background: radial-gradient(circle at 40% 35%, #3a3428, #2a2418 40%, #181410 100%);
   border: 1px solid var(--border-highlight);
   border-radius: var(--radius-lg);
   box-shadow:
-    0 0 40px rgba(232, 160, 48, 0.08),
-    0 0 80px rgba(232, 160, 48, 0.04),
-    0 4px 20px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    inset 0 0 30px rgba(0, 0, 0, 0.4);
+    0 0 50px rgba(232, 160, 48, 0.1),
+    0 0 100px rgba(232, 160, 48, 0.04),
+    0 6px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 40px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.2s, transform 0.1s;
 }
 .dark-anvil:hover {
   box-shadow:
-    0 0 50px var(--torch-glow),
-    0 0 100px rgba(232, 160, 48, 0.08),
-    0 4px 20px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 60px rgba(232, 160, 48, 0.2),
+    0 0 120px rgba(232, 160, 48, 0.08),
+    0 6px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
     inset 0 0 30px rgba(0, 0, 0, 0.3);
 }
 .dark-anvil:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
+}
+
+/* Inner face of the anvil */
+.anvil-face {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 50% 45%, rgba(232, 160, 48, 0.04) 0%, transparent 60%);
 }
 
 .anvil-icon {
-  font-size: 44px;
+  font-size: 48px;
   color: var(--torch);
-  text-shadow: 0 0 20px var(--torch-glow-strong);
+  text-shadow: 0 0 24px var(--torch-glow-strong), 0 0 48px rgba(232, 160, 48, 0.15);
   transition: transform 0.1s;
-  filter: drop-shadow(0 0 10px var(--torch-glow));
+  filter: drop-shadow(0 0 12px var(--torch-glow));
 }
+
+/* Corner accents */
+.anvil-accent {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--torch-dim);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.3;
+  z-index: 3;
+  pointer-events: none;
+}
+.anvil-accent--tl { top: 46px; left: 46px; border-top-width: 1px; border-left-width: 1px; }
+.anvil-accent--tr { top: 46px; right: 46px; border-top-width: 1px; border-right-width: 1px; }
+.anvil-accent--bl { bottom: 46px; left: 46px; border-bottom-width: 1px; border-left-width: 1px; }
+.anvil-accent--br { bottom: 46px; right: 46px; border-bottom-width: 1px; border-right-width: 1px; }
 
 .anvil-glow {
   position: absolute;
   inset: -4px;
   border-radius: var(--radius-lg);
   opacity: 0;
-  box-shadow: 0 0 40px var(--torch-glow-strong);
+  box-shadow: 0 0 50px var(--torch-glow-strong), 0 0 100px rgba(232, 160, 48, 0.15);
   transition: opacity 0.15s;
   pointer-events: none;
 }
@@ -178,17 +215,17 @@ function handleClick(e) {
   left: 50%;
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 17px;
   color: var(--torch);
-  text-shadow: 0 0 8px var(--torch-glow), 0 1px 3px rgba(0,0,0,0.9);
+  text-shadow: 0 0 10px var(--torch-glow), 0 1px 4px rgba(0,0,0,0.9);
   pointer-events: none;
   z-index: 10;
   animation: float-number 0.9s ease-out forwards;
   white-space: nowrap;
 }
 .float-crit {
-  font-size: 22px;
+  font-size: 24px;
   color: #ff6040;
-  text-shadow: 0 0 14px rgba(255, 96, 64, 0.6), 0 1px 3px rgba(0,0,0,0.9);
+  text-shadow: 0 0 16px rgba(255, 96, 64, 0.6), 0 1px 4px rgba(0,0,0,0.9);
 }
 </style>

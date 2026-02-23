@@ -20,7 +20,7 @@ defineEmits(['click'])
 
 <style scoped>
 .pixel-btn {
-  background: var(--bg-card);
+  background: linear-gradient(180deg, var(--bg-card-hover), var(--bg-card));
   padding: 8px 16px;
   color: var(--text);
   font-family: var(--font-display);
@@ -32,12 +32,12 @@ defineEmits(['click'])
   border-radius: var(--radius);
   transition: all 0.15s;
   white-space: nowrap;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 .pixel-btn:hover:not(:disabled) {
-  background: var(--bg-card-hover);
+  background: linear-gradient(180deg, var(--bg-card-hover), var(--bg-card));
   border-color: var(--border-highlight);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 .pixel-btn:active:not(:disabled) {
   transform: translateY(1px);

@@ -134,9 +134,10 @@ function handleBuy() {
   border-radius: var(--radius-sm);
 }
 .card-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-dim);
   margin-top: 2px;
+  line-height: 1.4;
 }
 .card-production {
   font-family: var(--font-mono);

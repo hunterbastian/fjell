@@ -18,10 +18,11 @@ function manualSave() {
     <div class="header-brand">
       <div class="brand-sigil">&#9876;</div>
       <h1 class="game-title display-title flicker">FJELL</h1>
+      <div class="brand-sigil brand-sigil--mirror">&#9876;</div>
     </div>
-    <div class="header-spacer" />
+    <div class="header-rule" />
     <PixelButton small @click="manualSave">
-      {{ saveFlash ? 'SAVED' : 'SAVE' }}
+      {{ saveFlash ? '✓ SAVED' : 'SAVE' }}
     </PixelButton>
   </header>
 </template>
@@ -30,29 +31,48 @@ function manualSave() {
 .game-header {
   display: flex;
   align-items: center;
-  padding: 10px 16px;
-  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg) 100%);
+  padding: 8px 16px;
+  background: linear-gradient(180deg, rgba(20, 18, 16, 0.95) 0%, var(--bg-dark) 100%);
   border-bottom: 1px solid var(--border);
   gap: 12px;
   flex-shrink: 0;
   z-index: 10;
+  position: relative;
+}
+/* Subtle gold underline accent */
+.game-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--torch-dim), transparent);
+  opacity: 0.4;
 }
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 .brand-sigil {
-  font-size: 18px;
+  font-size: 14px;
   color: var(--torch);
   filter: drop-shadow(0 0 6px var(--torch-glow));
-  opacity: 0.7;
+  opacity: 0.5;
+}
+.brand-sigil--mirror {
+  transform: scaleX(-1);
 }
 .game-title {
-  font-size: 15px;
-  letter-spacing: 6px;
+  font-size: 16px;
+  letter-spacing: 8px;
 }
-.header-spacer {
+.header-rule {
   flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-lit), transparent 80%);
+  opacity: 0.3;
 }
 </style>
